@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IronMarches Campaign Hub</title>
+  <style>
+    /* Matches Iron Journal's dark mode palette */
+    body { 
+      margin: 0; 
+      padding: 0; 
+      height: 100vh; 
+      background-color: #121212; 
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* The Tab Navigation Bar */
+    .tab-bar {
+      display: flex;
+      background-color: #1e1e1e;
+      border-bottom: 2px solid #333;
+    }
+
+    .tab-button {
+      flex: 1;
+      padding: 15px;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-button.active {
+      color: #fff;
+      border-bottom: 3px solid #4a90e2; /* A nice highlight color */
+      background-color: #2a2a2a;
+    }
+
+    /* The Content Area */
+    .content-area {
+      flex: 1;
+      position: relative;
+    }
+
+    /* Hides the inactive iframe */
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none; /* Hidden by default */
+    }
+
+    iframe.active {
+      display: block; /* Shows the active one */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tab-bar">
+    <button id="btn-map" class="tab-button active" onclick="switchTab('map')">World Map</button>
+    <button id="btn-journal" class="tab-button" onclick="switchTab('journal')">Iron Journal</button>
+  </div>
+
+  <div class="content-area">
+    <iframe id="frame-map" class="active" src="YOUR_KANKA_MAP_URL_HERE"></iframe>
+    
+    <iframe id="frame-journal" src="https://nboughton.uk/apps/iron-journal/#/"></iframe>
+  </div>
+
+  <script>
+    function switchTab(tabName) {
+      // Get the buttons and frames
+      const btnMap = document.getElementById('btn-map');
+      const btnJournal = document.getElementById('btn-journal');
+      const frameMap = document.getElementById('frame-map');
+      const frameJournal = document.getElementById('frame-journal');
+
+      // Reset everything
+      btnMap.classList.remove('active');
+      btnJournal.classList.remove('active');
+      frameMap.classList.remove('active');
+      frameJournal.classList.remove('active');
+
+      // Turn on the selected tab
+      if (tabName === 'map') {
+        btnMap.classList.add('active');
+        frameMap.classList.add('active');
+      } else {
+        btnJournal.classList.add('active');
+        frameJournal.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
