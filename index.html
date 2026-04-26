@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>IronMarches Campaign Hub</title>
   <style>
+    /* Matches Iron Journal's dark mode palette */
     body { 
       margin: 0; 
       padding: 0; 
@@ -16,22 +17,25 @@
       flex-direction: column;
     }
 
+    /* The Tab Navigation Bar */
     .tab-bar {
       display: flex;
       background-color: #1e1e1e;
       border-bottom: 2px solid #333;
     }
 
+    /* Tab Buttons */
     .tab-button {
-      flex: 1;
-      padding: 15px;
+      flex: 1; /* Makes it equal width */
+      padding: 12px 5px; /* Adjusted for mobile screens */
       background: none;
       border: none;
       color: #888;
-      font-size: 16px;
+      font-size: 14px; /* Scaled to fit 3 equal buttons perfectly */
       font-weight: bold;
       cursor: pointer;
       transition: all 0.2s;
+      white-space: nowrap; /* Forces text to stay on one line */
     }
 
     .tab-button.active {
@@ -40,10 +44,10 @@
       background-color: #2a2a2a;
     }
 
-    /* Styling for the new download link to make it look like a tab */
+    /* Styling for the Download link to perfectly match the tabs */
     .download-link {
-      flex: 0.5;
-      padding: 15px;
+      flex: 1; /* Matches the width of the other buttons */
+      padding: 12px 5px;
       color: #4a90e2;
       font-size: 14px;
       font-weight: bold;
@@ -53,17 +57,20 @@
       align-items: center;
       justify-content: center;
       border-left: 2px solid #333;
+      white-space: nowrap; /* Forces text to stay on one line */
     }
 
     .download-link:hover {
       background-color: #2a2a2a;
     }
 
+    /* The Content Area */
     .content-area {
       flex: 1;
       position: relative;
     }
 
+    /* Hides the inactive iframe */
     iframe {
       position: absolute;
       top: 0;
