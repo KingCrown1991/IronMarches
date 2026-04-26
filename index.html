@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>IronMarches Campaign Hub</title>
   <style>
-    /* Matches Iron Journal's dark mode palette */
     body { 
       margin: 0; 
       padding: 0; 
@@ -17,25 +16,36 @@
       flex-direction: column;
     }
 
-    /* The Tab Navigation Bar */
+    /* THE FIX: CSS Grid forces 3 perfectly equal columns */
     .tab-bar {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
       background-color: #1e1e1e;
       border-bottom: 2px solid #333;
     }
 
-    /* Tab Buttons */
-    .tab-button {
-      flex: 1; /* Makes it equal width */
-      padding: 12px 5px; /* Adjusted for mobile screens */
+    /* Shared styles to ensure all 3 buttons behave exactly the same */
+    .tab-button, .download-link {
+      box-sizing: border-box;
+      padding: 15px 2px;
+      margin: 0;
       background: none;
       border: none;
-      color: #888;
-      font-size: 14px; /* Scaled to fit 3 equal buttons perfectly */
+      font-size: 12px; /* Shrunk slightly so it fits on one line on small screens */
       font-weight: bold;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap; /* Absolutely forces text to stay on one line */
       cursor: pointer;
       transition: all 0.2s;
-      white-space: nowrap; /* Forces text to stay on one line */
+    }
+
+    /* Specific Tab Styling */
+    .tab-button {
+      color: #888;
+      border-bottom: 3px solid transparent; /* Keeps heights mathematically perfectly equal */
     }
 
     .tab-button.active {
@@ -44,20 +54,12 @@
       background-color: #2a2a2a;
     }
 
-    /* Styling for the Download link to perfectly match the tabs */
+    /* Specific Download Link Styling */
     .download-link {
-      flex: 1; /* Matches the width of the other buttons */
-      padding: 12px 5px;
       color: #4a90e2;
-      font-size: 14px;
-      font-weight: bold;
       text-decoration: none;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       border-left: 2px solid #333;
-      white-space: nowrap; /* Forces text to stay on one line */
+      border-bottom: 3px solid transparent; 
     }
 
     .download-link:hover {
@@ -70,7 +72,6 @@
       position: relative;
     }
 
-    /* Hides the inactive iframe */
     iframe {
       position: absolute;
       top: 0;
@@ -91,7 +92,6 @@
   <div class="tab-bar">
     <button id="btn-map" class="tab-button active" onclick="switchTab('map')">World Map</button>
     <button id="btn-journal" class="tab-button" onclick="switchTab('journal')">Iron Journal</button>
-    
     <a href="truths.json" download class="download-link">📥 Get Truths</a>
   </div>
 
